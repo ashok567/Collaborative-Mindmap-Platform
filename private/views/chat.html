@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>MindMap</title>
+
+	<link type="text/css" rel="stylesheet" href="../stylesheets/stylesheet.css" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
+<style>
+header{
+    clear: left;	
+	font-family: 'Helvetica';
+    margin: 0;
+    color: #2b91a2;
+    font-size: 25px;
+    text-align: center;
+	margin-bottom: 200px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- <header>
+  <h1>MindMap-Create&Share</h1>
+   </header>
+ -->
+
+	<section class="section">
+
+		<!-- These elements are displayed as white info cards in the middle of the screen -->
+
+		<div class="connected">
+
+			<!-- <img src="../img/unnamed.jpg" id="creatorImage" /> -->
+
+			<div class="infoConnected">
+				<h2>Start a Chat</h2>
+				<br/>
+
+				<form class="loginForm">
+					<input type="text" id="yourName" placeholder="Your nick name" /><br/><br/>
+					<input type="submit" id="yourEnter" value="ENTER" />
+				</form>
+
+			</div>
+
+		</div>
+
+		<div class="personinside">
+
+			<!-- <img src="../img/unnamed.jpg" id="ownerImage" /> -->
+
+			<div class="infoInside">
+				<h2>Start a Chat</span></h2>
+				<br/>
+
+				<form class="loginForm">
+					<input type="text" id="hisName" placeholder="Your nick name" /><br/><br/>
+					<!-- <input type="text" id="hisEmail" placeholder="Your email address" /><br/> -->
+					<input type="submit" id="hisEnter" value="CHAT" />
+				</form>
+
+			</div>
+
+		</div>
+
+		<div class="invite-textfield">
+
+			<!-- <h2>Oops, there are no other people in this chat!</h2> -->
+			<h2>Invite Friends</h2>
+
+			<div class="link">
+				<a title="Invite a friend" href="" id="link"></a>
+			</div>
+
+		</div>
+
+		<div class="left">
+
+			<img src="../img/unnamed.jpg" id="leftImage" />
+
+			<div class="info">
+				<h2><span class="nickname-left"></span> has left this chat.</h2>
+				<h5>Invite somebody else by sending them this page.</h5>
+			</div>
+
+		</div>
+
+		<div class="toomanypeople">
+
+			<h2>Oops, you can not join this chat!</h2>
+			<h5>There are already enough people in it. Would you like to create a <a title="New Room" href="/create" id="room">new room</a>?</h5>
+
+		</div>
+
+		<div class="nomessages">
+
+			<!-- <img src="../img/unnamed.jpg" id="noMessagesImage" /> -->
+
+			<!-- <div class="info">
+				<h2>Send them a message from the form below!</h2>
+		</div> -->
+		</div>
+
+		<div class="chatscreen">
+
+			<ul class="chats">
+				<!-- The chat messages will go here -->
+			</ul>
+
+		</div>
+
+	</section>
+
+	<footer>
+
+		<form id="chatform">
+
+			<textarea id="message" placeholder="Write something.."></textarea>
+			<input type="submit" id="submit" value="SEND"/>
+
+		</form>
+
+	</footer>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="../javascripts/moment.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../javascripts/chat.js"></script>
+
+</body>
+
+</html>

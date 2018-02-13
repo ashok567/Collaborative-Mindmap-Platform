@@ -1,0 +1,48 @@
+{
+  "name": "MindMap",
+  "version": "0.0.0",
+  "description": "Generated with Eclipse npm Tools",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "3.x",
+    "stylus": "*",
+    "nib": "*",
+    "merge": "*",
+    "passport": "*",
+    "async": "^0.9.0",
+    "bower": "^1.3.8",
+    "bower-requirejs": "^0.11.0",
+    "formidable": "^1.0.15",
+    "underscore": "^1.6.0",
+    "pug": "^2.0.0-alpha6",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express-session": "*",
+    "morgan": "*",
+    "path":"*",
+    "csurf":"^1.9.0",
+    "extend":"^3.0.0",
+    "request":"*",
+    "html" : "*",
+    "consolidate" : "*",
+    "swig" : "*",
+    "ejs" : "*",
+    "gravatar": "~1.0.6",
+    "socket.io": "1.0.6",
+	"fs": "*",
+	"unescape": "*",
+	"googleapis": "*",
+	"qs": "*"
+    	
+  },
+  
+  "engines": {
+	    "node": "0.10.x"
+	  }
+	  
+}

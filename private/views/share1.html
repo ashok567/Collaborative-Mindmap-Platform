@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MindMap</title>
+<meta name="description" content="A mind map editor, showing how subtrees can be moved, copied, deleted, and laid out." />
+<meta charset="UTF-8">
+<script src="../javascripts/go.js"></script>
+<script id="code" src="../javascripts/open.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script>
+var url1 = window.location.href;
+var id = url1.substring(url.lastIndexOf('/') + 1);
+jQuery.get("http://localhost:5000/diagrams/"+id+".txt", function(data) {
+	myDiagram.model = go.Model.fromJson(data);
+});
+</script>
+<style>
+#myDiagramDiv {
+  border: 8px dotted #aaa;
+  border-radius: 20px;
+  text-align: center;
+  float: center;
+}
+header{
+    clear: left;	
+	font-family: 'Helvetica';
+    margin: 0;
+    color: #2b91a2;
+    font-size: 25px;
+    text-align: center;
+}
+</style>
+</head>
+<body onload="init()">
+<header>
+  <h1>MindMap-Create&Share</h1>
+</header>
+<div id="main">
+  <div id="myDiagramDiv" style="border: solid 3px black; width:100%; height:500px;">
+  </div>
+  <button id="SaveButton" onclick="download()">Download</button>
+  </div>
+</body>
+</html>

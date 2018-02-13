@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MindMap</title>
+<meta name="description" content="A mind map editor, showing how subtrees can be moved, copied, deleted, and laid out." />
+<meta charset="UTF-8">
+<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+<script src="../javascripts/go.js"></script>
+<script id="code" src="../javascripts/canvas.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+		var url = '';
+		var b = '';
+		$(document).ready(function() { 
+			$.get('/login', function(data) {
+				url = data;
+			});
+
+			var interval = window.setInterval((function() {
+				if (b.closed) {
+			 		window.clearInterval(interval);
+
+			 		window.location = '/newfile';
+			 	}
+			}),1000);
+		});
+</script>
+<script type="text/javascript">  
+
+$(document).ready(function(){
+    $("#svg").click(function(event){
+  var newWindow = window.open("about:blank","newWindow");
+  var newDocument = newWindow.document;
+  var svg = myDiagram.makeImage({
+    document: newDocument,  
+    scale: 2,
+    background: "White",
+	  type: "image/jpeg",
+    maxSize: new go.Size(1000, NaN)
+  });
+  newDocument.body.appendChild(svg);
+  event.preventDefault();
+  return false;
+  });
+});
+
+$(document).ready(function(){
+    $("#drive").click(function(event){
+        var contents = myDiagram.model.toJson();
+        console.log("This is content: " + contents);
+        	$.ajax({
+                url:'/drive',
+                type:'POST',
+                data: {'code': contents},
+                processData: 'false',
+            });
+        event.preventDefault();
+        return false;
+        });
+    });
+    
+$(document).ready(function(){
+    $("#fb").click(function(event){
+        var contents = myDiagram.model.toJson();
+        console.log("This is content: " + contents);
+        	$.ajax({
+                url:'/fb',
+                type:'POST',
+                data: {'code': contents},
+                processData: 'false',
+            });
+        event.preventDefault();
+        return false;
+        });
+    });
+        
+$(document).ready(function(){
+    $("#invite").click(function(event){
+        var contents = myDiagram.model.toJson();
+        console.log("This is content: " + contents);
+        	$.ajax({
+                url:'/invite',
+                type:'POST',
+                data: {'code': contents},
+                processData: 'false',
+            });
+        event.preventDefault();
+        return false;
+        });
+    }); 
+    
+var url1 = window.location.href;
+var id = url1.substring(url1.lastIndexOf('/') + 1);
+        
+/* jQuery.get("http://localhost:5000/diagrams/"+id+".txt", function(data) {
+	myDiagram.model = go.Model.fromJson(data);
+}); */
+	
+function revert(){
+	jQuery.get("http://localhost:5000/diagrams/"+id+"Backup.txt", function(data) {
+		myDiagram.model = go.Model.fromJson(data);
+	});
+}
+
+function myFunction() {
+	prompt("Invite a friend by sending them this URL",window.location.href);
+}
+
+function chat() {
+    var myWindow = window.open("http://localhost:5000/chat", "", 'height=320, width=380, top=350, left=960, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no;');
+    
+ }
+ 
+function bigImg(x) {
+    x.style.height = "50px";
+    x.style.width = "50px";
+}
+
+function normalImg(x) {
+    x.style.height = "35px";
+    x.style.width = "35px";
+}
+
+</script>
+<style>
+#myDiagramDiv {
+  border: 8px dotted #aaa;
+  border-radius: 20px;
+  text-align: center;
+  float: center;
+}
+header{
+    clear: left;	
+	font-family: 'Helvetica';
+    margin: 0;
+    color: #2b91a2;
+    font-size: 25px;
+    text-align: center;
+}
+
+.button{
+     position:relative;
+     padding:10px 30px;
+	 top:5px;
+     left:-1px;
+     border:0px;
+     background-color:#2b91a2;
+     color:white;
+}
+</style>
+</head>
+<body onload="init()">
+<header>
+ <h1>MindMap-Create&Share</h1>
+</header>
+<div id="main">
+<div id="icons" align="right">
+<a id="home" onclick="location.href='http://localhost:5000/main'"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/home1.png"></a>
+<img id="fb" onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/fb.png" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=example.org', '_blank');" />
+<a id="drive" onclick="b = window.open(url, 'window', 'status=0,menubar=0,resizable=1,width=500,height=500;')"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/drive.png"></a>
+<a id="logout" onclick="location.href='http://localhost:5000'"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/logout.png"></a>
+</div>
+<div id="myDiagramDiv" style="border: solid 3px black; width:100%; height:500px;"></div>
+<button id="SaveButton" class="button"  onclick="load()"><b>Save</b></button>
+<button id="download" class="button" onclick="download()"><b>Download Text</b></button>
+<button id="svg" class="button"><b>View</b></button>
+<span id="icons" style="float:right;">
+<a id="invite" onclick="myFunction()"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/edit.png"></a>
+<a id="revert" onclick="revert()"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/revert.jpg"></a> 
+<a id="chat" onclick="chat()"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="http://localhost:5000/icons/chat.png"></a>
+</span>
+</div>
+</body>
+</html>

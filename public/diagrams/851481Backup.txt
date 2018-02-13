@@ -1,0 +1,8 @@
+{ "class": "go.TreeModel",
+  "nodeDataArray": [ 
+{"key":0, "text":"Mind Map", "loc":"0 0"},
+{"key":1, "parent":0, "text":"Node1", "brush":"skyblue", "dir":"right", "loc":"77 -22"},
+{"key":2, "parent":0, "text":"Node2", "brush":"darkseagreen", "dir":"right", "loc":"77 43"},
+{"key":3, "parent":0, "text":"Node3", "brush":"palevioletred", "dir":"left", "loc":"-20 -31.75"},
+{"key":4, "parent":0, "text":"Node4", "brush":"coral", "dir":"left", "loc":"-20 52.75"}
+ ]}
