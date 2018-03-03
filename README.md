@@ -2,19 +2,13 @@
 
 # MindMap
 
+A web application for collaborative mindmap diagrams developed using GoJS library having features like real-time collaboration, google authentication, share on drive or facebook and chat rooms.
 
 
-## Usage
+## Installation Steps
 
-
-
-## Developing
-
-
-
-### Tools
-
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
-
-Nodeclipse is free open-source project that grows with your contributions.
+1. Insatll Nodeclipse plugin from Eclipse Market 
+2. Import project in Nodeclipse
+3. Run package.json to install node modules required for this project
+4. Run bower.json to insatll dependencies for frontend development
+5. Run Project as Node Application
