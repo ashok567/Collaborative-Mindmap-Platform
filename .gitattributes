@@ -1,2 +1,0 @@
-*.js linguist-language=node.js
-public/js/pdfjs.js linguist-vendored=true
